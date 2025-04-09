@@ -158,7 +158,7 @@ while True:
     # will be incremented by 10
     snake_body.insert(0, list(snake_position))
     if snake_position[0] == fruit_position[0] and snake_position[1] == fruit_position[1]:
-        score += 10
+        score += random.randint(1, 20)
         pygame.mixer.Sound.play(eat_sound)
         # increasing the snake speed when a fruit is eaten
         snake_speed += 0.5
@@ -214,15 +214,12 @@ while True:
         if snake_head.colliderect(obstacle):  # Collision detection
             game_over()
     # Touching the snake body
-    for block in snake_body[1:]:
-        if snake_position[0] == block[0] and snake_position[1] == block[1]:
-            game_over()
+    #for block in snake_body[1:]:
+    #    if snake_position[0] == block[0] and snake_position[1] == block[1]:
+    #        game_over()
 
     # displaying score continuously
     show_score(1, white, 'times new roman', 20)
 
     pygame.display.update()
     fps.tick(snake_speed)
-
-
-
