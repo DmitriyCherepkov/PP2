@@ -180,10 +180,14 @@ while True:
     snake.update()  # Update the snake's position and check for collisions
     if snake.dead:  # If the snake is dead, break the loop and end the game
         pygame.mixer.Sound("sound.mp3").play()
-        if get_player_data(player) == None:
+        player_data = get_player_data(player)
+        if player_data == None:
             insert_player_result(name=player, level=snake.level, score=(len(snake.body) - 1), speed=snake.speed)
         else:
-            update_person(name=player, level=snake.level, score=(len(snake.body) - 1), speed=snake.speed)
+            current_score = len(snake.body) - 1
+            previous_score = previous_score = player_data[2]
+            if current_score > previous_score:
+                update_person(name=player, level=snake.level, score=current_score, speed=snake.speed)
         time.sleep(1)
         break
 
