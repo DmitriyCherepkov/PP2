@@ -154,7 +154,9 @@ def main():
         with connect_to_db() as connection:
             with connection.cursor() as cursor:
                 while True:
-                    choice = input("\n1 - Add new user\n2 - Update user\n3 - Find by phone\n4 - Delete user\n5 - Import from CSV\n6 - Find by phone\n7 - Exit\nChoose an option: ")
+                    choice = input("""\n1 -insert_or_update_user\n2 -update_user_info\n3 -find_people_by_phone_number
+                                   \n4 -find_people_by_name\n5 -find_people_by_surname\n6 -delete_user
+                                   \n7 -import_from_csv\n8 -query_with_pagination\n9 -exit\nChoose option: """)
 
                     options = {
                         "1": lambda: insert_or_update_user(cursor, connection),
